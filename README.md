@@ -50,9 +50,9 @@ Make sure you have the following installed and configured:
 
 ## Clone the Repository
 
-git clone https://github.com/<your-username>/hiive-devops-takehome.git
+git clone https://github.com/prudhvivasireddi/Hiive-Assignment.git
 
-cd hiive-devops-takehome
+cd Hiive-Assignment
 
 terraform init
 
@@ -65,9 +65,17 @@ aws eks update-kubeconfig \
   --region $(terraform output -raw region)
   
 kubectl get svc nginx-service
+
 export LB=$(kubectl get svc nginx-service -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+
 echo "LoadBalancer URL: http://$LB"
+
 curl http://$LB
 ![alt text](image.png)
+
+<img width="1122" height="589" alt="image" src="https://github.com/user-attachments/assets/5b901527-7ac4-45ba-9c83-bd72ce6001e0" />
+
+
 To tear down all created resources:
+
 terraform destroy
