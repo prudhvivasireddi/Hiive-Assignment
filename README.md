@@ -51,13 +51,19 @@ Make sure you have the following installed and configured:
 ## Clone the Repository
 
 git clone https://github.com/<your-username>/hiive-devops-takehome.git
+
 cd hiive-devops-takehome
+
 terraform init
+
 terraform plan
+
 terraform apply
+
 aws eks update-kubeconfig \
   --name $(terraform output -raw cluster_name) \
   --region $(terraform output -raw region)
+  
 kubectl get svc nginx-service
 export LB=$(kubectl get svc nginx-service -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 echo "LoadBalancer URL: http://$LB"
